@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     if (image.comments.length > 0) {
-      // const deleteButton = document.querySelector('#delete_button')
       imageComments.addEventListener('click', deleteComment)
 
       function deleteComment(event) {
@@ -98,10 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then (res => fetchImage())
   }
 
-
-
-
-
-  fetchImage();
+  fetchImage(); //fetch the image and content as soon as the page loads
 
 })
