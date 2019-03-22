@@ -38,8 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
     image.comments.forEach(function (comment) {
       imageComments.innerHTML += `
       <li> ${comment.content} </li>
+      <button type="button" id = "delete_button" data-id = ${comment.id}> Delete </button>
       `
     })
+
+    if (image.comments.length > 0) {
+      // const deleteButton = document.querySelector('#delete_button')
+      imageComments.addEventListener('click', deleteComment)
+
+      function deleteComment(event) {
+        if (event.target.id === "delete_button"){
+          let commentId = event.target.dataset.id
+
+          fetch (`${commentsURL}${commentId}`, {
+            method: "DELETE"
+          }).then (res => fetchImage())
+        }
+      }
+
+    }
   }
 
   likeButton.addEventListener('click', increaseNoOfLikes)
@@ -78,8 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         image_id: imageId,
         content: comment
       })
-    })
+    }).then (res => fetchImage())
   }
+
+
+
+
 
   fetchImage();
 
