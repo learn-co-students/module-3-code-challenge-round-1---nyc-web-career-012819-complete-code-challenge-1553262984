@@ -21,13 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.querySelector('#submit_button')
   const commentInput = document.querySelector('#comment_input')
 
-
+  //START FOR FETCH IMAGE
   function fetchImage() {
     fetch (imageURL)
     .then (res => res.json())
     .then (image => renderImage(image))
   }
+  //END FOR FETCH IMAGE
 
+
+  //START FOR RENDERING IMAGE
   function renderImage(image) {
     // debugger;
     imageName.innerText = image.name
@@ -42,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     })
 
+    // start for delete comment (only be able to delete when there is any comment)
     if (image.comments.length > 0) {
       imageComments.addEventListener('click', deleteComment)
 
@@ -54,10 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
           }).then (res => fetchImage())
         }
       }
-
     }
   }
+  //END FOR RENDER IMAGE
 
+  //START FOR LIKES
   likeButton.addEventListener('click', increaseNoOfLikes)
 
   function increaseNoOfLikes() {
@@ -75,7 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
   }
+  //END FOR LIKES
 
+
+  //START FOR COMMENT
   submitButton.addEventListener('click', postAComment)
 
   function postAComment(event) {
@@ -96,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     }).then (res => fetchImage())
   }
+  //END FOR COMMENT
 
   fetchImage(); //fetch the image and content as soon as the page loads
 
