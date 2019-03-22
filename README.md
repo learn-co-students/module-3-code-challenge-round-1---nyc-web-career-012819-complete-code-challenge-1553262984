@@ -6,7 +6,7 @@
 - Events and Event Handlers
 - Callbacks
 - Fetching from APIs
-
+ 
 ## Instructions
 
 Today we're building an app for viewing, liking, and commenting on a single picture. There is a backend API deployed on a server that you will use. You will be building out the frontend for this app.
