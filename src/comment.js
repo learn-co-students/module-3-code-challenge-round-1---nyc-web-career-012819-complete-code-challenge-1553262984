@@ -9,4 +9,4 @@ class Comment {
   }
 }
 
-Comment.all = []
+Comment.all = [];

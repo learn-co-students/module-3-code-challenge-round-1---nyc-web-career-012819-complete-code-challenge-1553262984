@@ -31,7 +31,7 @@ class Dom {
     // Post the comment
     // Then make a call to the database to get the commentId
     // Place that value in the delete button's data-id attribute
-    // This could all be avoided if we rendered the new comments pessimistically from the start
+    // This could be avoided if we rendered the new comments pessimistically from the start
     adapter.postComment(
       {
         image_id: this.imageTag.dataset.id, 
@@ -41,7 +41,10 @@ class Dom {
         adapter.fetchImage()
           .then(function(attributes) {
             const lastCommentId = attributes.comments.pop().id;
-            this.commentsList.lastElementChild.lastElementChild.setAttribute('data-id', lastCommentId);
+            this.commentsList
+              .lastElementChild
+              .lastElementChild
+              .setAttribute('data-id', lastCommentId);
           }.bind(this));
       });
   }

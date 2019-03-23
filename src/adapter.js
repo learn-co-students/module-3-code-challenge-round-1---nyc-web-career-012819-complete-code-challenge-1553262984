@@ -1,5 +1,5 @@
 const adapter = (function() {
-  const IMAGE_ID = 2257; //Enter the id from the fetched image here
+  const IMAGE_ID = 2257;
   const API_URL = 'https://randopic.herokuapp.com';
 
   return {
