@@ -25,7 +25,7 @@ class Dom {
 
     // Optimistic rendering
     // Id is initially blank
-    const stopgapComment = { content: this.commentInput.value, id: ''};
+    const stopgapComment = { content: this.commentInput.value };
     this.commentsList.appendChild(this.createCommentElement(stopgapComment));
 
     // Post the comment
@@ -40,11 +40,11 @@ class Dom {
     ).then(() => {
         adapter.fetchImage()
           .then(function(attributes) {
-            const lastCommentId = attributes.comments.pop().id;
+            const lastComment = new Comment(attributes.comments.pop());
             this.commentsList
               .lastElementChild
               .lastElementChild
-              .setAttribute('data-id', lastCommentId);
+              .setAttribute('data-id', lastComment.id);
           }.bind(this));
       });
   }
